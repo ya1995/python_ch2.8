@@ -1,4 +1,5 @@
 from point import Point
+from rect import Rect
 
 
 def test_bound_instance_method():
@@ -40,11 +41,53 @@ def test_constructor():
     p2.show()
 
 
+def test_to_string():
+    p = Point(10, 20)
+    print(p)
+    print(repr(p))
+
+    p2 = eval(repr(p))
+    print(p2)
+
+
+def test_class_rect():
+    r1 = Rect(10, 10, 50, 50)
+    r2 = eval(repr(r1))
+
+    print(r1, str(r1.area()), sep=':')
+    print(r2, str(r2.area()), sep=':')
+
+    r1.draw()
+    r2.draw()
+
+
+def test_oerator_overloading():
+    p1 = Point(100, 200)
+    p2 = Point(50, 50)
+    p3 = p1 + p2
+    p4 = p1 - p2
+
+    print(p3)
+    print(p4)
+
+    p3 += Point(-10, -10)
+    p4 -= Point(-10, -10)
+    print(p3)
+    print(p4)
+
+    print(Rect(10, 20) == Rect(20, 10))
+    print(Rect(10, 10) > Rect(10, 5))
+    print(Rect(10, 20) < Rect(20, 10))
+
+
 def main():
     # test_othermethod()
     # test_unbound_class_method()
     # test_bound_instance_method()
-    test_constructor()
+    # test_constructor()
+    # test_to_string()
+    # test_class_rect()
+    test_oerator_overloading()
 
 
 if __name__ == '__main__':
